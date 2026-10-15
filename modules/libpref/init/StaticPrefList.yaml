@@ -8791,7 +8791,7 @@
 #endif
 
 #if defined(MOZ_WIDGET_ANDROID)
-- name: gfx.video.aimage-reader-gpu-process-android
+- name: gfx.video.force-aimage-reader-android
   type: bool
   value: false
   mirror: once
@@ -12028,7 +12028,7 @@
 # See bug 1934547.
 - name: layout.css.webkit-line-clamp.skip-paint
   type: bool
-  value: false
+  value: true
   mirror: always
 
 # Whether we refer ::-webkit-scrollbar's width/height properties to disable
@@ -17317,6 +17317,13 @@
   value: 10
   mirror: always
 
+# Validate that the principal used to bind child-written alt-data could have
+# been loaded by the content process that wrote it.
+- name: network.cache.alt_data.validate_binding_principal
+  type: RelaxedAtomicBool
+  value: true
+  mirror: always
+
 - name: network.cache.persist_permanent_redirects_http
   type: bool
   value: false
@@ -21598,6 +21605,12 @@
 
 # Whether to disable SwipeTracker (e.g. swipe-to-nav).
 - name: widget.disable-swipe-tracker
+  type: bool
+  value: false
+  mirror: always
+
+# Whether to provide haptic feedback when crossing the swipe navigation threshold.
+- name: widget.swipe.haptic-feedback.enabled
   type: bool
   value: false
   mirror: always
